@@ -1,307 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>꼼짝마 코로나! 설치가이드</title>
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"
-    ></script>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css"
-    />
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "NanumSquareRound", sans-serif;
-      }
 
-      body {
-        background-color: #00c8ff;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>꼼짝마 코로나! 설치가이드</title>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+    integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdn.rawgit.com/innks/NanumSquareRound/master/nanumsquareround.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "NanumSquareRound", sans-serif;
+    }
 
-      .red {
-        color: #f00 !important;
-        font-weight: bold;
-      }
+    body {
+      background-color: #00c8ff;
+    }
 
-      .main {
-        height: 100vh;
-        width: 100vw;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
+    .red {
+      color: #f00 !important;
+      font-weight: bold;
+    }
 
-      .main > .img {
-        width: 45%;
-        padding-top: 45%;
-        position: relative;
-        overflow: hidden;
-      }
+    .main {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
 
-      .main > .img > img {
-        position: absolute;
-        width: calc(100% + 10px);
-        height: calc(100% + 10px);
-        top: -5px;
-        bottom: -5px;
-        left: -5px;
-        right: -5px;
-      }
+    .main>.img {
+      width: 45%;
+      padding-top: 45%;
+      position: relative;
+      overflow: hidden;
+    }
 
-      #move-top {
-        position: fixed;
-        width: 40px;
-        right: 20px;
-        bottom: 20px;
-        z-index: 1000;
-      }
+    .main>.img>img {
+      position: absolute;
+      width: calc(100% + 10px);
+      height: calc(100% + 10px);
+      top: -5px;
+      bottom: -5px;
+      left: -5px;
+      right: -5px;
+    }
 
-      .main > div:not(.img) {
-        margin-top: 30px;
-      }
+    #move-top {
+      position: fixed;
+      width: 40px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 1000;
+    }
 
-      .main > div:not(.img) > input {
-        width: 100px;
-        height: 34px;
-        border: none;
-        outline: none;
-        background-color: skyblue;
-      }
+    .main>div:not(.img) {
+      margin-top: 30px;
+    }
 
-      .main > div:not(.img) > input:focus {
-        border: none;
-        appearance: none;
-      }
+    .main>div:not(.img)>input {
+      width: 100px;
+      height: 34px;
+      border: none;
+      outline: none;
+      background-color: skyblue;
+    }
 
-      a {
-        text-decoration: none;
-      }
+    .main>div:not(.img)>input:focus {
+      border: none;
+      appearance: none;
+    }
 
-      .download {
-        /* rounded corner overflow mask fix */
-        mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
-        overflow: hidden;
-        border-radius: 10px;
+    a {
+      text-decoration: none;
+    }
 
-        background: #00c8ff;
-        border: 2px solid white;
-        color: white;
-        width: 120px;
-        display: inline-block;
-        position: relative;
+    .download {
+      /* rounded corner overflow mask fix */
+      mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
+      overflow: hidden;
+      border-radius: 10px;
 
-        padding: 10px 0;
-      }
+      background: #00c8ff;
+      border: 2px solid white;
+      color: white;
+      width: 120px;
+      display: inline-block;
+      position: relative;
 
-      .download:first-child {
-        margin-right: 20px;
-      }
+      padding: 10px 0;
+    }
 
-      .download span {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-left: 20px;
-      }
+    .download:first-child {
+      margin-right: 20px;
+    }
 
-      .download span::before,
-      .download span::after {
-        content: "";
-        width: 1px;
-        height: 16px;
-        background: #00c8ff;
-        opacity: 0;
-        position: absolute;
-        left: 50%;
-        top: 100%;
-      }
+    .download span {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-left: 20px;
+    }
 
-      .download svg {
-        z-index: 0;
-        fill: rgba(255, 255, 255, 1);
-        position: absolute;
-        left: 20%;
-        top: 45%;
-        transform: translate(-50%, -50%) rotate(0deg) scale(0.4857);
-        /* @include transform( translate(-50%, -50%)  rotate(0deg) scale(.04857)  ); */
-        /* @include transition ( all 350ms ease-out );  */
-        height: 40px;
-      }
+    .download span::before,
+    .download span::after {
+      content: "";
+      width: 1px;
+      height: 16px;
+      background: #00c8ff;
+      opacity: 0;
+      position: absolute;
+      left: 50%;
+      top: 100%;
+    }
 
-      .description {
-        min-height: 100vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
+    .download svg {
+      z-index: 0;
+      fill: rgba(255, 255, 255, 1);
+      position: absolute;
+      left: 20%;
+      top: 45%;
+      transform: translate(-50%, -50%) rotate(0deg) scale(0.4857);
+      /* @include transform( translate(-50%, -50%)  rotate(0deg) scale(.04857)  ); */
+      /* @include transition ( all 350ms ease-out );  */
+      height: 40px;
+    }
 
-      .description div.text {
-        margin-top: 20px;
-        font-size: 12px;
-        color: white;
-      }
+    .description {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-      .description img {
-        width: 175px;
-        margin-top: 20px;
-      }
+    .description div.text {
+      margin-top: 20px;
+      font-size: 12px;
+      color: white;
+    }
 
-      #ios {
-        min-height: 100vh;
-      }
-    </style>
-  </head>
+    .description img {
+      width: 175px;
+      margin-top: 20px;
+    }
 
-  <body>
-    <img id="move-top" src="./icons8-up-squared-100.png" alt="" srcset="" />
+    #ios {
+      min-height: 100vh;
+    }
+  </style>
+</head>
 
-    <div class="main">
-      <div class="img">
-        <img src="./icon.png" alt="" />
-      </div>
+<body>
+  <img id="move-top" src="./icons8-up-squared-100.png" alt="" srcset="" />
 
-      <div style="margin-bottom: 10px;">
-        <a href="#" class="download">
-          <svg width="700px" height="700px" viewBox="0 0 40 48" version="1.1">
-            <path
-              d="M27.4703377,4.19382178 L29.9390848,0.715960396 C30.0856739,0.509227723 30.0491797,0.237861386 29.8575239,0.109544554 C29.666113,-0.0180594059 29.3915493,0.045029703 29.2460623,0.252 L26.6803239,3.8649505 C24.9894667,3.21873267 23.1118522,2.85861386 21.1328377,2.85861386 C19.1538232,2.85861386 17.2757188,3.21837624 15.5849841,3.8649505 L13.019613,0.251881188 C12.8725341,0.0451485149 12.5984601,-0.0181782178 12.4069268,0.109425743 C12.2153935,0.237386139 12.1790217,0.508871287 12.3256109,0.715841584 L14.7952152,4.19370297 C10.8686594,5.96590099 8.11506159,9.33350495 7.7642029,13.263802 L34.5000029,13.263802 C34.1503688,9.33350495 31.3966486,5.9660198 27.4703377,4.19382178 Z M26.7168181,9.67580198 C25.9002297,9.67580198 25.2381906,9.03338614 25.2381906,8.24067327 C25.2381906,7.44784158 25.9002297,6.80542574 26.7168181,6.80542574 C27.5342638,6.80542574 28.196058,7.44807921 28.196058,8.24067327 C28.196058,9.03326733 27.5340188,9.67580198 26.7168181,9.67580198 Z M15.5475101,9.67580198 C14.7303094,9.67580198 14.0681478,9.03338614 14.0681478,8.24067327 C14.0681478,7.44807921 14.729942,6.80542574 15.5475101,6.80542574 C16.3640986,6.80542574 17.0260152,7.44784158 17.0260152,8.24067327 C17.0261377,9.03326733 16.3640986,9.67580198 15.5475101,9.67580198 Z"
-              id="Shape"
-            ></path>
-            <path
-              d="M6.04762826,29.6552079 C6.04762826,31.2532277 4.71228333,32.5487525 3.06502319,32.5487525 L3.06502319,32.5487525 C1.41788551,32.5487525 0.0825405797,31.2532277 0.0825405797,29.6552079 L0.0825405797,17.9512871 C0.0825405797,16.3532673 1.41788551,15.0577426 3.06502319,15.0577426 L3.06502319,15.0577426 C4.71228333,15.0577426 6.04762826,16.3532673 6.04762826,17.9512871 L6.04762826,29.6552079 L6.04762826,29.6552079 Z"
-              id="Shape"
-            ></path>
-            <path
-              d="M7.76371304,15.1472079 L7.76371304,36.2856238 C7.76371304,37.5409901 8.81273768,38.5588515 10.1070572,38.5588515 L12.8787797,38.5588515 L12.8787797,45.0630891 C12.8787797,46.6612277 14.2140022,47.9566337 15.8612623,47.9566337 C17.5085225,47.9566337 18.8438674,46.6612277 18.8438674,45.0630891 L18.8438674,38.5588515 L23.4204609,38.5588515 L23.4204609,45.0630891 C23.4204609,46.6612277 24.7555609,47.9566337 26.4029435,47.9566337 C28.0503261,47.9566337 29.3854261,46.6612277 29.3854261,45.0630891 L29.3854261,38.5588515 L32.1571486,38.5588515 C33.4514681,38.5588515 34.5007377,37.5415842 34.5007377,36.2856238 L34.5007377,15.1472079 L7.76371304,15.1472079 L7.76371304,15.1472079 Z"
-            ></path>
-            <path
-              d="M36.2167,29.6552079 C36.2167,31.2532277 37.5519225,32.5487525 39.1991826,32.5487525 L39.1991826,32.5487525 C40.8463203,32.5487525 42.1816652,31.2532277 42.1816652,29.6552079 L42.1816652,17.9512871 C42.1816652,16.3532673 40.8463203,15.0577426 39.1991826,15.0577426 L39.1991826,15.0577426 C37.5519225,15.0577426 36.2167,16.3532673 36.2167,17.9512871 L36.2167,29.6552079 L36.2167,29.6552079 Z"
-            ></path>
-          </svg>
-          <span>Android</span>
-        </a>
+  <div class="main">
+    <div class="img">
+      <img src="./icon.png" alt="" />
+    </div>
 
-        <a href="#" class="download" onclick="alert('준비중입니다.')">
-          <svg width="700px" height="700px" viewBox="0 0 40 48" version="1.1">
-            <path
-              d="M33.3732057,25.4546901 C33.3112919,19.3876023 38.4333971,16.4779415 38.6622967,16.3333801 C35.7842105,12.2154854 31.3010526,11.6513684 29.7033493,11.586152 C25.8879426,11.2084211 22.2585646,13.7825497 20.3221053,13.7825497 C18.390622,13.7825497 15.4025837,11.6420117 12.2382775,11.6982456 C8.07961722,11.7586901 4.24507177,14.0625965 2.10373206,17.7043275 C-2.21712919,25.0352281 0.99722488,35.8957661 5.20851675,41.8413099 C7.26631579,44.751345 9.72009569,48.0203041 12.9418182,47.9035322 C16.0443062,47.7824561 17.217512,45.9405848 20.9685167,45.9405848 C24.7195215,45.9405848 25.7736842,47.9035322 29.0571292,47.8432749 C32.3955981,47.7826433 34.5108134,44.8772865 36.5543541,41.9580819 C38.917512,38.5818012 39.8905263,35.3130292 39.9478469,35.1451696 C39.8736842,35.1121404 33.4377033,32.7013801 33.3732057,25.4546901 L33.3732057,25.4546901 Z"
-            ></path>
-            <path
-              d="M27.2041148,7.65015205 C28.9139713,5.6217076 30.068134,2.80748538 29.7533014,0 C27.2902392,0.0980584795 24.3045933,1.60421053 22.537512,3.62807018 C20.9517703,5.4234386 19.5639234,8.28893567 19.9357895,11.0402807 C22.6854545,11.250152 25.4922488,9.6740117 27.2041148,7.65015205 L27.2041148,7.65015205 Z"
-            ></path>
-          </svg>
-          <span>iPhone</span>
-        </a>
-      </div>
-
-      <a
-        href="#"
-        class="download"
-        id="android-btn"
-        style="width: 264px; margin-bottom: 10px;"
-      >
-        <span style="padding-left: 0;">안드로이드 설치가이드</span>
+    <div style="margin-bottom: 10px;">
+      <a href="#" class="download">
+        <svg width="700px" height="700px" viewBox="0 0 40 48" version="1.1">
+          <path
+            d="M27.4703377,4.19382178 L29.9390848,0.715960396 C30.0856739,0.509227723 30.0491797,0.237861386 29.8575239,0.109544554 C29.666113,-0.0180594059 29.3915493,0.045029703 29.2460623,0.252 L26.6803239,3.8649505 C24.9894667,3.21873267 23.1118522,2.85861386 21.1328377,2.85861386 C19.1538232,2.85861386 17.2757188,3.21837624 15.5849841,3.8649505 L13.019613,0.251881188 C12.8725341,0.0451485149 12.5984601,-0.0181782178 12.4069268,0.109425743 C12.2153935,0.237386139 12.1790217,0.508871287 12.3256109,0.715841584 L14.7952152,4.19370297 C10.8686594,5.96590099 8.11506159,9.33350495 7.7642029,13.263802 L34.5000029,13.263802 C34.1503688,9.33350495 31.3966486,5.9660198 27.4703377,4.19382178 Z M26.7168181,9.67580198 C25.9002297,9.67580198 25.2381906,9.03338614 25.2381906,8.24067327 C25.2381906,7.44784158 25.9002297,6.80542574 26.7168181,6.80542574 C27.5342638,6.80542574 28.196058,7.44807921 28.196058,8.24067327 C28.196058,9.03326733 27.5340188,9.67580198 26.7168181,9.67580198 Z M15.5475101,9.67580198 C14.7303094,9.67580198 14.0681478,9.03338614 14.0681478,8.24067327 C14.0681478,7.44807921 14.729942,6.80542574 15.5475101,6.80542574 C16.3640986,6.80542574 17.0260152,7.44784158 17.0260152,8.24067327 C17.0261377,9.03326733 16.3640986,9.67580198 15.5475101,9.67580198 Z"
+            id="Shape"></path>
+          <path
+            d="M6.04762826,29.6552079 C6.04762826,31.2532277 4.71228333,32.5487525 3.06502319,32.5487525 L3.06502319,32.5487525 C1.41788551,32.5487525 0.0825405797,31.2532277 0.0825405797,29.6552079 L0.0825405797,17.9512871 C0.0825405797,16.3532673 1.41788551,15.0577426 3.06502319,15.0577426 L3.06502319,15.0577426 C4.71228333,15.0577426 6.04762826,16.3532673 6.04762826,17.9512871 L6.04762826,29.6552079 L6.04762826,29.6552079 Z"
+            id="Shape"></path>
+          <path
+            d="M7.76371304,15.1472079 L7.76371304,36.2856238 C7.76371304,37.5409901 8.81273768,38.5588515 10.1070572,38.5588515 L12.8787797,38.5588515 L12.8787797,45.0630891 C12.8787797,46.6612277 14.2140022,47.9566337 15.8612623,47.9566337 C17.5085225,47.9566337 18.8438674,46.6612277 18.8438674,45.0630891 L18.8438674,38.5588515 L23.4204609,38.5588515 L23.4204609,45.0630891 C23.4204609,46.6612277 24.7555609,47.9566337 26.4029435,47.9566337 C28.0503261,47.9566337 29.3854261,46.6612277 29.3854261,45.0630891 L29.3854261,38.5588515 L32.1571486,38.5588515 C33.4514681,38.5588515 34.5007377,37.5415842 34.5007377,36.2856238 L34.5007377,15.1472079 L7.76371304,15.1472079 L7.76371304,15.1472079 Z">
+          </path>
+          <path
+            d="M36.2167,29.6552079 C36.2167,31.2532277 37.5519225,32.5487525 39.1991826,32.5487525 L39.1991826,32.5487525 C40.8463203,32.5487525 42.1816652,31.2532277 42.1816652,29.6552079 L42.1816652,17.9512871 C42.1816652,16.3532673 40.8463203,15.0577426 39.1991826,15.0577426 L39.1991826,15.0577426 C37.5519225,15.0577426 36.2167,16.3532673 36.2167,17.9512871 L36.2167,29.6552079 L36.2167,29.6552079 Z">
+          </path>
+        </svg>
+        <span>Android</span>
       </a>
-      <a href="#" class="download" id="ios-btn" style="width: 264px;">
-        <span style="padding-left: 0;">아이폰 설치가이드</span>
+
+      <a href="#" class="download" onclick="alert('준비중입니다.')">
+        <svg width="700px" height="700px" viewBox="0 0 40 48" version="1.1">
+          <path
+            d="M33.3732057,25.4546901 C33.3112919,19.3876023 38.4333971,16.4779415 38.6622967,16.3333801 C35.7842105,12.2154854 31.3010526,11.6513684 29.7033493,11.586152 C25.8879426,11.2084211 22.2585646,13.7825497 20.3221053,13.7825497 C18.390622,13.7825497 15.4025837,11.6420117 12.2382775,11.6982456 C8.07961722,11.7586901 4.24507177,14.0625965 2.10373206,17.7043275 C-2.21712919,25.0352281 0.99722488,35.8957661 5.20851675,41.8413099 C7.26631579,44.751345 9.72009569,48.0203041 12.9418182,47.9035322 C16.0443062,47.7824561 17.217512,45.9405848 20.9685167,45.9405848 C24.7195215,45.9405848 25.7736842,47.9035322 29.0571292,47.8432749 C32.3955981,47.7826433 34.5108134,44.8772865 36.5543541,41.9580819 C38.917512,38.5818012 39.8905263,35.3130292 39.9478469,35.1451696 C39.8736842,35.1121404 33.4377033,32.7013801 33.3732057,25.4546901 L33.3732057,25.4546901 Z">
+          </path>
+          <path
+            d="M27.2041148,7.65015205 C28.9139713,5.6217076 30.068134,2.80748538 29.7533014,0 C27.2902392,0.0980584795 24.3045933,1.60421053 22.537512,3.62807018 C20.9517703,5.4234386 19.5639234,8.28893567 19.9357895,11.0402807 C22.6854545,11.250152 25.4922488,9.6740117 27.2041148,7.65015205 L27.2041148,7.65015205 Z">
+          </path>
+        </svg>
+        <span>iPhone</span>
       </a>
     </div>
 
-    <div id="android" class="description">
-      <div class="text">1. 버튼을 클릭하여 설치파일을 다운로드 받습니다.</div>
-      <img src="./android/1.png" alt="" />
-      <div class="text">2. 스마트폰의 ‘파일탐색기’ 앱을 실행시킨다.</div>
-      <img src="./android/1.png" alt="" />
-      <div class="text">3. ‘내장 메모리’ 폴더로 이동한다.</div>
-      <img src="./android/2.png" alt="" />
-      <div class="text">4. SafePocketBook.apk 파일을 찾아 실행시킨다.</div>
-      <img src="./android/3.png" alt="" />
-      <div class="text">
-        5. 설치가 완료되면 앱을 실행시켜 제대로 설치가 되었는지 확인한다.
-      </div>
-      <div class="text red">* 설치 실패시 6번 부터 참조</div>
-      <div>
-        <img src="./android/4-1.png" alt="" />
-        <img src="./android/4-2.png" alt="" />
-      </div>
-      <div class="text">
-        6.Google Play를 실행한 후, 왼쪽 상단의 메뉴 아이콘을 클릭한다.
-      </div>
-      <img src="./android/5.png" alt="" />
-      <div class="text">7.‘Play 프로텍트’ 메뉴를 선택한다.</div>
-      <img src="./android/6.png" alt="" />
-      <div class="text">8.오른쪽 상단의 설정 아이콘을 클릭한다.</div>
-      <img src="./android/7.png" alt="" />
-      <div class="text">9.‘Play 프로텍트로 앱 검사‘를 비활성화 한다.</div>
-      <div>
-        <img src="./android/8-1.png" alt="" />
-        <img src="./android/8-2.png" alt="" />
-      </div>
-    </div>
-    <div id="ios" class="description">
-      ios
-    </div>
+    <a href="#" class="download" id="android-btn" style="width: 264px; margin-bottom: 10px;">
+      <span style="padding-left: 0;">안드로이드 설치가이드</span>
+    </a>
+    <a href="#" class="download" id="ios-btn" style="width: 264px;">
+      <span style="padding-left: 0;">아이폰 설치가이드</span>
+    </a>
+  </div>
 
-    <script>
-      $("#android-btn").click(function () {
-        $("#android").show();
-        $("#ios").hide();
+  <div id="android" class="description">
+    <div class="text">1. 버튼을 클릭하여 설치파일을 다운로드 받습니다.</div>
+    <img src="./android/0.png" alt="" />
+    <div class="text">2. 스마트폰의 ‘파일탐색기’ 앱을 실행시킨다.</div>
+    <img src="./android/1.png" alt="" />
+    <div class="text">3. ‘내장 메모리’ 폴더로 이동한다.</div>
+    <img src="./android/2.png" alt="" />
+    <div class="text">4. SafePocketBook.apk 파일을 찾아 실행시킨다.</div>
+    <img src="./android/3.png" alt="" />
+    <div class="text">
+      5. 설치가 완료되면 앱을 실행시켜 제대로 설치가 되었는지 확인한다.
+    </div>
+    <div class="text red">* 설치 실패시 6번 부터 참조</div>
+    <div>
+      <img src="./android/4-1.png" alt="" />
+      <img src="./android/4-2.png" alt="" />
+    </div>
+    <div class="text">
+      6.Google Play를 실행한 후, 왼쪽 상단의 메뉴 아이콘을 클릭한다.
+    </div>
+    <img src="./android/5.png" alt="" />
+    <div class="text">7.‘Play 프로텍트’ 메뉴를 선택한다.</div>
+    <img src="./android/6.png" alt="" />
+    <div class="text">8.오른쪽 상단의 설정 아이콘을 클릭한다.</div>
+    <img src="./android/7.png" alt="" />
+    <div class="text">9.‘Play 프로텍트로 앱 검사‘를 비활성화 한다.</div>
+    <div>
+      <img src="./android/8-1.png" alt="" />
+      <img src="./android/8-2.png" alt="" />
+    </div>
+  </div>
+  <div id="ios" class="description">
+    ios
+  </div>
 
-        $("#move-top").show();
-        $("html, body").animate(
-          {
-            scrollTop: $("#android").offset().top,
+  <script>
+    $("#android-btn").click(function () {
+      $("#android").show();
+      $("#ios").hide();
+
+      $("#move-top").show();
+      $("html, body").animate({
+          scrollTop: $("#android").offset().top,
+        },
+        1000,
+        function () {
+          $(".main").hide();
+        }
+      );
+    });
+
+    $("#ios-btn").click(function () {
+      alert("준비중입니다.");
+      // $("#android").hide();
+      // $("#ios").show();
+      // $("#move-top").show();
+      // $('html, body').animate({
+      //   scrollTop: $("#ios").offset().top
+      // }, 1000);
+    });
+
+    $("#move-top").click(function () {
+      $(".main").show(function () {
+        $("#move-top").hide();
+
+        $("html, body").animate({
+            scrollTop: $(".main").offset().top,
           },
           1000,
           function () {
-            $(".main").hide();
+            $("#android").hide();
+            $("#ios").hide();
           }
         );
       });
+    });
 
-      $("#ios-btn").click(function () {
-        alert("준비중입니다.");
-        // $("#android").hide();
-        // $("#ios").show();
-        // $("#move-top").show();
-        // $('html, body').animate({
-        //   scrollTop: $("#ios").offset().top
-        // }, 1000);
-      });
+    $(function () {
+      $("#android").hide();
+      $("#ios").hide();
+      $("#move-top").hide();
+    });
+  </script>
+</body>
 
-      $("#move-top").click(function () {
-        $(".main").show(function () {
-          $("#move-top").hide();
-
-          $("html, body").animate(
-            {
-              scrollTop: $(".main").offset().top,
-            },
-            1000,
-            function () {
-              $("#android").hide();
-              $("#ios").hide();
-            }
-          );
-        });
-      });
-
-      $(function () {
-        $("#android").hide();
-        $("#ios").hide();
-        $("#move-top").hide();
-      });
-    </script>
-  </body>
 </html>
