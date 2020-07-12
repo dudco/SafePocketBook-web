@@ -207,88 +207,71 @@
   </div>
 
   <div id="android" class="description">
-    <div class="text">1. 버튼을 클릭하여 설치파일을 다운로드 받습니다.</div>
+    <div class="text">1. 버튼을 클릭하여 설치파일을 다운로드한다.</div>
     <img src="./android/0.png" alt="" />
-    <div class="text">2. 스마트폰의 ‘파일탐색기’ 앱을 실행시킨다.</div>
-    <img src="./android/1.png" alt="" />
-    <div class="text">3. ‘내장 메모리’ 폴더로 이동한다.</div>
-    <img src="./android/2.png" alt="" />
-    <div class="text">4. SafePocketBook.apk 파일을 찾아 실행시킨다.</div>
-    <img src="./android/3.png" alt="" />
-    <div class="text">
-      5. 설치가 완료되면 앱을 실행시켜 제대로 설치가 되었는지 확인한다.
+    <div class="text">2. 다운로드가 완료되면 ‘열기’버튼을 클릭한다.</div>
+    <img src="./android/1.jpg" alt="" />
+    <div class="text">3. ‘설정’ 버튼을 클릭한다.</div>
+    <img src="./android/2.jpg" alt="" />
+    <div class="text" style="text-align: center;">4. ‘이 출처 허용’ 옵션을 활성 상태로 변경한 후,<br /> 왼쪽 상단의
+      < 버튼을 클릭한다.</div> <img src="./android/3.jpg" alt="" />
+      <div class="text">
+        5. ‘설치’ 버튼을 클릭해 설치를 시작한다.
+      </div>
+      <img src="./android/4.jpg" alt="" />
     </div>
-    <div class="text red">* 설치 실패시 6번 부터 참조</div>
-    <div>
-      <img src="./android/4-1.png" alt="" />
-      <img src="./android/4-2.png" alt="" />
+    <div id="ios" class="description">
+      ios
     </div>
-    <div class="text">
-      6.Google Play를 실행한 후, 왼쪽 상단의 메뉴 아이콘을 클릭한다.
-    </div>
-    <img src="./android/5.png" alt="" />
-    <div class="text">7.‘Play 프로텍트’ 메뉴를 선택한다.</div>
-    <img src="./android/6.png" alt="" />
-    <div class="text">8.오른쪽 상단의 설정 아이콘을 클릭한다.</div>
-    <img src="./android/7.png" alt="" />
-    <div class="text">9.‘Play 프로텍트로 앱 검사‘를 비활성화 한다.</div>
-    <div>
-      <img src="./android/8-1.png" alt="" />
-      <img src="./android/8-2.png" alt="" />
-    </div>
-  </div>
-  <div id="ios" class="description">
-    ios
-  </div>
 
-  <script>
-    $("#android-btn").click(function () {
-      $("#android").show();
-      $("#ios").hide();
+    <script>
+      $("#android-btn").click(function () {
+        $("#android").show();
+        $("#ios").hide();
 
-      $("#move-top").show();
-      $("html, body").animate({
-          scrollTop: $("#android").offset().top,
-        },
-        1000,
-        function () {
-          $(".main").hide();
-        }
-      );
-    });
-
-    $("#ios-btn").click(function () {
-      alert("준비중입니다.");
-      // $("#android").hide();
-      // $("#ios").show();
-      // $("#move-top").show();
-      // $('html, body').animate({
-      //   scrollTop: $("#ios").offset().top
-      // }, 1000);
-    });
-
-    $("#move-top").click(function () {
-      $(".main").show(function () {
-        $("#move-top").hide();
-
+        $("#move-top").show();
         $("html, body").animate({
-            scrollTop: $(".main").offset().top,
+            scrollTop: $("#android").offset().top,
           },
           1000,
           function () {
-            $("#android").hide();
-            $("#ios").hide();
+            $(".main").hide();
           }
         );
       });
-    });
 
-    $(function () {
-      $("#android").hide();
-      $("#ios").hide();
-      $("#move-top").hide();
-    });
-  </script>
+      $("#ios-btn").click(function () {
+        alert("준비중입니다.");
+        // $("#android").hide();
+        // $("#ios").show();
+        // $("#move-top").show();
+        // $('html, body').animate({
+        //   scrollTop: $("#ios").offset().top
+        // }, 1000);
+      });
+
+      $("#move-top").click(function () {
+        $(".main").show(function () {
+          $("#move-top").hide();
+
+          $("html, body").animate({
+              scrollTop: $(".main").offset().top,
+            },
+            1000,
+            function () {
+              $("#android").hide();
+              $("#ios").hide();
+            }
+          );
+        });
+      });
+
+      $(function () {
+        $("#android").hide();
+        $("#ios").hide();
+        $("#move-top").hide();
+      });
+    </script>
 </body>
 
 </html>
